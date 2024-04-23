@@ -1,18 +1,13 @@
 package com.assesment.extenddummyjson.ScheduleTasks;
 
 import com.assesment.extenddummyjson.DTO.ProductResponseDto;
-import com.assesment.extenddummyjson.Repository.ProductRepository;
 import com.assesment.extenddummyjson.Services.ProductEntityServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -44,13 +39,10 @@ public class ScheduleProductFetch {
                     productEntityServices.saveAllProducts(response.getProducts());
                 }
             } else {
-                // Handle non-successful HTTP status codes
                 System.out.println("HTTP error: " + statusCode);
             }
         } catch (Exception e) {
-            // Handle general exceptions
             System.err.println("Error occurred while fetching products: " + e.getMessage());
         }
     }
-
 }

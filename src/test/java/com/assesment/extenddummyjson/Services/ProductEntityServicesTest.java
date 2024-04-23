@@ -56,4 +56,24 @@ public class ProductEntityServicesTest {
         assertEquals(page, resultPage);
     }
 
+    @Test
+    public void testGetBrandsOfCategory() {
+        // Given
+        String category = "TestCategory";
+        List<Product> products = Arrays.asList(
+                new Product(1L, "Product1", "Description1", 10.0, 0.0, 4.5, 100, "Brand1", category, "thumbnail1", Arrays.asList("image1.jpg")),
+                new Product(2L, "Product2", "Description2", 15.0, 0.0, 4.7, 150, "Brand2", category, "thumbnail2", Arrays.asList("image2.jpg")),
+                new Product(3L, "Product3", "Description3", 20.0, 0.0, 4.2, 200, "Brand1", category, "thumbnail3", Arrays.asList("image3.jpg"))
+        );
+        when(productRepository.findByCategory(category)).thenReturn(products);
+
+        // When
+        List<String> brands = productEntityServices.getBrandsOfCategory(category);
+
+        // Then
+        assertEquals(2, brands.size());
+        assertEquals("Brand1", brands.get(0));
+        assertEquals("Brand2", brands.get(1));
+    }
+
 }

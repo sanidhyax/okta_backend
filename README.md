@@ -2,14 +2,14 @@
 Java and Springboot application to extend the functionality of dummyjson.com by exposing endpoints that allows users to do brand based filtering.
 
 
-### Access it on [extenddummyjson-latest.onrender.com](extenddummyjson-latest.onrender.com)
+### Access it on [extenddummyjson-latest.onrender.com](https://extenddummyjson-latest.onrender.com)
 >The backend is hosted on render and can be accessed using the above link but the initial load may be a minute long as render spins down the deployment after inactivity.
 
 
 ### Overview
 
 The application uses Spring WebMVC framework.   
-After the application is ready, an event is triggered which fetches all the products from [dummyjson.com/products](dummyjson.com/products) endpoint which serves all the products available.  
+After the application is ready, an event is triggered which fetches all the products from [dummyjson.com/products](https://dummyjson.com/products) endpoint which serves all the products available.  
 All the products are stored in the database for which I'm using __H2__.  
 I've defined the products entity and am utilizing __JPA__, creating a repository to access the database.
 

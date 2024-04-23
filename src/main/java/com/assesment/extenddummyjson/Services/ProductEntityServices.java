@@ -1,6 +1,5 @@
 package com.assesment.extenddummyjson.Services;
 
-import com.assesment.extenddummyjson.DTO.ProductResponseDto;
 import com.assesment.extenddummyjson.Entities.Product;
 import com.assesment.extenddummyjson.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;

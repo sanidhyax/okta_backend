@@ -47,7 +47,8 @@ public class BrandController {
             return new ProductResponseDto(products.getContent(), (int) products.getTotalElements(), skip, limit);
         } catch (Exception e) {
             System.out.println("Error while getting brand specific products");
-            return new ProductResponseDto(new ArrayList<>(), -1, 0, 0);
+            response.setStatus(500);
+            return new ProductResponseDto(new ArrayList<>(), -1, skip, limit);
         }
     }
 
@@ -66,9 +67,12 @@ public class BrandController {
             return new ProductResponseDto(products.getContent(), (int) products.getTotalElements(), skip, limit);
         } catch (Exception e) {
             System.out.println("Error while getting products by brand and category: " + e.getMessage());
-            return new ProductResponseDto(new ArrayList<>(), -1, 0, 0);
+            response.setStatus(500);
+            return new ProductResponseDto(new ArrayList<>(), -1, skip, limit);
         }
     }
+
+
 
 
 }

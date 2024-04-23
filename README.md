@@ -26,7 +26,7 @@ The backend service exposes the following rest endpoints for consumption
 This is a Springboot application built on Java17.  
 To run it, make sure you have Java and Maven installed on your system.
 
-####Steps
+#### Steps
 1. Clone the repository
 2. Do a `mvn clean install`
 3. Run using `mvn spring-boot:run`

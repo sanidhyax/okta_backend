@@ -38,4 +38,10 @@ public class ProductEntityServices {
         Pageable pageable = PageRequest.of(page, limit);
         return productRepository.findByBrand(brandName, pageable);
     }
+
+
+    public Page<Product> getProductsByCategoryAndBrand(String category, String brandName, int page, int limit) {
+        Pageable pageable = PageRequest.of(page, limit);
+        return productRepository.findByBrandAndCategory(brandName, category, pageable);
+    }
 }

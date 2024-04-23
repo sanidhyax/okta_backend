@@ -11,4 +11,6 @@ import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
     Page<Product> findByBrand(String brand, Pageable pageable);
+
+    Page<Product> findByBrandAndCategory(String brandName, String category, Pageable pageable);
 }

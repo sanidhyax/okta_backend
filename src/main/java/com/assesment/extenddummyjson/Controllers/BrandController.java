@@ -4,6 +4,8 @@ import com.assesment.extenddummyjson.DTO.ProductResponseDto;
 import com.assesment.extenddummyjson.Entities.Product;
 import com.assesment.extenddummyjson.Services.ProductEntityServices;
 import jakarta.servlet.http.HttpServletResponse;
+import org.apache.catalina.util.StringUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +26,15 @@ public class BrandController {
     }
 
     @GetMapping("/products/brands")
-    public List<String> getBrands(HttpServletResponse response) {
+    public List<String> getBrands(
+            HttpServletResponse response,
+            @RequestParam(required = false, defaultValue = "") String category
+    ) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
         try {
-            response.setHeader("Access-Control-Allow-Origin", "*");
+            if (StringUtils.isNotBlank(category)){
+                return productEntityServices.getBrandsOfCategory(category);
+            }
             return productEntityServices.getAllBrands();
         } catch (Exception e){
             System.out.println("Error while fetching Brands: " + e.getMessage());
@@ -41,8 +49,8 @@ public class BrandController {
             @RequestParam(required = false, defaultValue = "0") Integer skip,
             @RequestParam(required = false, defaultValue = "10") Integer limit
     ){
+        response.setHeader("Access-Control-Allow-Origin", "*");
         try {
-            response.setHeader("Access-Control-Allow-Origin", "*");
             Page<Product> products = productEntityServices.getProductsByBrand(brandName, (int) skip / limit, limit);
             return new ProductResponseDto(products.getContent(), (int) products.getTotalElements(), skip, limit);
         } catch (Exception e) {
@@ -60,8 +68,8 @@ public class BrandController {
             @RequestParam(required = false, defaultValue = "0") Integer skip,
             @RequestParam(required = false, defaultValue = "10") Integer limit
     ) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
         try {
-            response.setHeader("Access-Control-Allow-Origin", "*");
             Page<Product> products = productEntityServices.getProductsByCategoryAndBrand(category, brandName, (int) skip / limit, limit);
 
             return new ProductResponseDto(products.getContent(), (int) products.getTotalElements(), skip, limit);
@@ -71,8 +79,4 @@ public class BrandController {
             return new ProductResponseDto(new ArrayList<>(), -1, skip, limit);
         }
     }
-
-
-
-
 }

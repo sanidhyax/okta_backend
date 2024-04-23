@@ -43,4 +43,15 @@ public class ProductEntityServices {
         Pageable pageable = PageRequest.of(page, limit);
         return productRepository.findByBrandAndCategory(brandName, category, pageable);
     }
+
+    public List<String> getBrandsOfCategory(String category) {
+        List<Product> products = productRepository.findByCategory(category);
+
+        List<String> brands = products.stream()
+                .map(Product::getBrand)
+                .distinct()
+                .collect(Collectors.toList());
+
+        return brands;
+    }
 }

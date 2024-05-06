@@ -4,7 +4,6 @@ import com.assesment.extenddummyjson.DTO.ProductResponseDto;
 import com.assesment.extenddummyjson.Entities.Product;
 import com.assesment.extenddummyjson.Services.ProductEntityServices;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.catalina.util.StringUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin(origins = {"http://localhost:3000", "https://cosmic-druid-28d7d7.netlify.app/"})
+@CrossOrigin(origins = "*")
 @RestController
 public class BrandController {
 

@@ -12,9 +12,8 @@ import org.springframework.web.client.RestTemplate;
 
 
 /**
- * This class defines a scheduled task to fetch products from the products API at regular intervals. This
- * mocks the behaviour of having the latest data at all times in 10 second intervals. Preferred
- * would've been a push service
+ * This class defines a scheduled task to fetch products from the products API when the application gets
+ * ready post build and run.
  *
  * The fetched products are then processed and saved to the H2 database.
  */

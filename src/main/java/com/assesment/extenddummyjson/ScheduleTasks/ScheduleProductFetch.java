@@ -1,6 +1,11 @@
 package com.assesment.extenddummyjson.ScheduleTasks;
 
+import co.elastic.clients.elasticsearch.ElasticsearchClient;
+import co.elastic.clients.elasticsearch.core.GetResponse;
+import co.elastic.clients.elasticsearch.core.SearchResponse;
 import com.assesment.extenddummyjson.DTO.ProductResponseDto;
+import com.assesment.extenddummyjson.ElasticSearchClient.ElasticSearchClient;
+import com.assesment.extenddummyjson.Entities.Product;
 import com.assesment.extenddummyjson.Services.ProductEntityServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
